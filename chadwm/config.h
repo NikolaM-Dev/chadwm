@@ -1,7 +1,7 @@
 #define XF86MonBrightnessDown 0x1008ff03
 #define XF86MonBrightnessUp 0x1008ff02
 
-/* appearance */
+// appearance
 static const unsigned int borderpx = 0;       // border pixel of windows
 static const unsigned int default_border = 0; // to switch back to default border after dynamic border resizing via keybinds
 static const unsigned int snap = 32;          // snap pixel
@@ -25,26 +25,26 @@ enum showtab_modes
 };
 static const int showtab = showtab_auto;
 static const int toptab = True;
-static const int topbar = 1; /* 0 means bottom bar */
+static const int topbar = 1; // 0 means bottom bar
 static const int horizpadbar = 5;
 static const int vertpadbar = 11;
 static const int vertpadtab = 33;
 static const int horizpadtabi = 15;
 static const int horizpadtabo = 15;
 static const int scalepreview = 4;
-static int tag_preview = 0; /* 1 means enable, 0 is off */
+static int tag_preview = 0; // 1 means enable, 0 is off
 
 static const char *fonts[] = {
     "JetBrainsMono Nerd Font:style:medium:size=10",
     "Material Design Icons-Regular:size=10",
 };
-static const int colorfultag = 1; /* 0 means use SchemeSel for selected non vacant tag */
+static const int colorfultag = 1; // 0 means use SchemeSel for selected non vacant tag
 
 // theme
 #include "themes/onedark.h"
 
 static const char *colors[][3] = {
-    /*               fg         bg         border   */
+    //              fg         bg         border
     [SchemeNorm] = {gray3, black, gray2},
     [SchemeSel] = {gray4, blue, blue},
     [TabSel] = {blue, gray2, black},
@@ -61,13 +61,13 @@ static const char *colors[][3] = {
     [SchemeBtnClose] = {red, black, black},
 };
 
-/* tagging */
+// tagging
 static char *tags[] = {"", "", "", "", ""};
 
 static const char *eww[] = {"eww", "open", "eww", NULL};
 
 static const Launcher launchers[] = {
-    /* command       name to display */
+    // command       name to display
     {eww, ""},
 };
 
@@ -78,34 +78,34 @@ static const int tagschemes[] = {
     SchemeTag4,
     SchemeTag5};
 
-static const unsigned int ulinepad = 5;     /* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke = 2;  /* thickness / height of the underline */
-static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
-static const int ulineall = 0;              /* 1 to show underline on all tags, 0 for just the active ones */
+static const unsigned int ulinepad = 5;     // horizontal padding between the underline and tag
+static const unsigned int ulinestroke = 2;  // thickness / height of the underline
+static const unsigned int ulinevoffset = 0; // how far above the bottom of the bar the line should appear
+static const int ulineall = 0;              // 1 to show underline on all tags, 0 for just the active ones
 
 static const Rule rules[] = {
-    /* xprop(1):
-     *	WM_CLASS(STRING) = instance, class
-     *	WM_NAME(STRING) = title
-     */
-    /* class      instance    title       tags mask     iscentered   isfloating   monitor */
+    // xprop(1):
+    //	WM_CLASS(STRING) = instance, class
+    //	WM_NAME(STRING) = title
+
+    // class      instance    title       tags mask     iscentered   isfloating   monitor
     {"Gimp", NULL, NULL, 0, 0, 1, -1},
     {"Firefox", NULL, NULL, 1 << 8, 0, 0, -1},
     {"eww", NULL, NULL, 0, 0, 1, -1},
 };
 
-/* layout(s) */
-static const float mfact = 0.50;     /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;        /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+// layout(s)
+static const float mfact = 0.50;     // factor of master area size [0.05..0.95]
+static const int nmaster = 1;        // number of clients in master area
+static const int resizehints = 0;    // 1 means respect size hints in tiled resizals
+static const int lockfullscreen = 1; // 1 will force focus on the fullscreen window
 
-#define FORCE_VSPLIT 1 /* nrowgrid layout: force two clients to always split vertically */
+#define FORCE_VSPLIT 1 // nrowgrid layout: force two clients to always split vertically
 #include "functions.h"
 
 static const Layout layouts[] = {
-    /* symbol     arrange function */
-    {"[]=", tile}, /* first entry is default */
+    // symbol     arrange function
+    {"[]=", tile}, // first entry is default
     {"[M]", monocle},
     {"[@]", spiral},
     {"[\\]", dwindle},
@@ -118,10 +118,10 @@ static const Layout layouts[] = {
     {":::", gaplessgrid},
     {"|M|", centeredmaster},
     {">M>", centeredfloatingmaster},
-    {"><>", NULL}, /* no layout function means floating behavior */
+    {"><>", NULL}, // no layout function means floating behavior
 };
 
-/* key definitions */
+// key definitions
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY, TAG)                                          \
     {MODKEY, KEY, view, {.ui = 1 << TAG}},                         \
@@ -129,20 +129,20 @@ static const Layout layouts[] = {
         {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},          \
         {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+// helper for spawning shell commands in the pre dwm-5.0 fashion
 #define SHCMD(cmd)                                           \
     {                                                        \
         .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL } \
     }
 
-/* commands */
+// commands
 static const char *term[] = {"st", NULL}; // change this to your term
 static const char *rofi[] = {"rofi", "-show", "drun", NULL};
 static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
 static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
 
 static Key keys[] = {
-    /* modifier                     key        function        argument */
+    // modifier                     key        function        argument
     {MODKEY, XK_c, spawn, {.v = rofi}},
     {MODKEY, XK_Return, spawn, {.v = term}},
     // { MODKEY,                       XK_Return, spawn,          SHCMD("st_pad && st")},
@@ -228,28 +228,28 @@ static Key keys[] = {
 
 };
 
-/* button definitions */
-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+// button definitions
+// click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin
 static Button buttons[] = {
-    /* click                event mask      button          function        argument */
+    // click                event mask      button          function        argument
     {ClkLtSymbol, 0, Button1, setlayout, {0}},
     {ClkLtSymbol, 0, Button3, setlayout, {.v = &layouts[2]}},
     {ClkWinTitle, 0, Button2, zoom, {0}},
     {ClkStatusText, 0, Button2, spawn, {.v = term}},
 
-    /* Keep movemouse? */
-    /* { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} }, */
+    // Keep movemouse?
+    // { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 
-    /* placemouse options, choose which feels more natural:
-		 *    0 - tiled position is relative to mouse cursor
-		 *    1 - tiled postiion is relative to window center
-		 *    2 - mouse pointer warps to window center
-		 *
-		 * The moveorplace uses movemouse or placemouse depending on the floating state
-		 * of the selected client. Set up individual keybindings for the two if you want
-		 * to control these separately (i.e. to retain the feature to move a tiled window
-		 * into a floating position).
-		 */
+    // placemouse options, choose which feels more natural:
+    //     *    0 - tiled position is relative to mouse cursor
+    //     *    1 - tiled postiion is relative to window center
+    //     *    2 - mouse pointer warps to window center
+    //     *
+    //     * The moveorplace uses movemouse or placemouse depending on the floating state
+    //     * of the selected client. Set up individual keybindings for the two if you want
+    //     * to control these separately (i.e. to retain the feature to move a tiled window
+    //     * into a floating position).
+
     {ClkClientWin, MODKEY, Button1, moveorplace, {.i = 0}},
     {ClkClientWin, MODKEY, Button2, togglefloating, {0}},
     {ClkClientWin, MODKEY, Button3, resizemouse, {0}},
