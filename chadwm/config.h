@@ -96,11 +96,13 @@ static const int ulineall = 0;              // 1 to show underline on all tags, 
 // --------------------------------------------- Rules ---------------------------------------------- //
 
 static const Rule rules[] = {
-    // xprop(1):
-    //	WM_CLASS(STRING) = instance, class
-    //	WM_NAME(STRING) = title
+    /**
+     * xprop(1):
+     * WM_CLASS(STRING) = instance, class
+     * WM_NAME(STRING) = title
+     */
 
-    // class      instance    title       tags mask     iscentered   isfloating   monitor
+    // { class, instance, title, tags mask, iscentered, isfloating, monitor }
     {"Gimp", NULL, NULL, 0, 0, 1, -1},
     {"Firefox", NULL, NULL, 1 << 8, 0, 0, -1},
     {"eww", NULL, NULL, 0, 0, 1, -1},
@@ -117,8 +119,8 @@ static const int lockfullscreen = 1; // 1 will force focus on the fullscreen win
 #include "functions.h"
 
 static const Layout layouts[] = {
-    // symbol     arrange function
-    {"[]=", tile}, // first entry is default
+    // { symbol, arrange function }
+    {"[]", tile}, // first entry is default
     {"[M]", monocle},
     {"[@]", spiral},
     {"[\\]", dwindle},
@@ -322,15 +324,17 @@ static Button buttons[] = {
     // Keep movemouse?
     // { ClkClientWin, MODKEY, Button1, movemouse, {0} },
 
-    // Placemouse options, choose which feels more natural:
-    //     * 0 - tiled position is relative to mouse cursor
-    //     * 1 - tiled postiion is relative to window center
-    //     * 2 - mouse pointer warps to window center
-    //
-    // The moveorplace uses movemouse or placemouse depending on the floating state
-    // of the selected client. Set up individual keybindings for the two if you want
-    // to control these separately (i.e. to retain the feature to move a tiled window
-    // into a floating position).
+    /**
+     * Placemouse options, choose which feels more natural:
+     *      * 0 - tiled position is relative to mouse cursor
+     *      * 1 - tiled postiion is relative to window center
+     *      * 2 - mouse pointer warps to window center
+
+     * The moveorplace uses movemouse or placemouse depending on the floating state
+     * of the selected client. Set up individual keybindings for the two if you want
+     * to control these separately (i.e. to retain the feature to move a tiled window
+     * into a floating position).
+     */
 
     {ClkClientWin, MODKEY, Button1, moveorplace, {.i = 0}},
     {ClkClientWin, MODKEY, Button2, togglefloating, {0}},
