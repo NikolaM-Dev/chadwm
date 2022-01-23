@@ -17,6 +17,8 @@ static const int systraypinningfailfirst = 1; // 1: if pinning fails,display sys
 static const int showsystray = 1;             // 0 means no systray
 static const int showbar = 1;                 // 0 means no bar
 
+// -------------------------------------------- Top Bar --------------------------------------------- //
+
 enum showtab_modes
 {
     showtab_never,
@@ -24,6 +26,7 @@ enum showtab_modes
     showtab_nmodes,
     showtab_always
 };
+
 static const int showtab = showtab_auto;
 static const int toptab = True;
 static const int topbar = 1; // 0 means bottom bar
@@ -35,17 +38,21 @@ static const int horizpadtabo = 15;
 static const int scalepreview = 4;
 static int tag_preview = 0; // 1 means enable, 0 is off
 
+// --------------------------------------------- Fonts ---------------------------------------------- //
+
 static const char *fonts[] = {
     "JetBrainsMono Nerd Font:style:medium:size=10",
     "Material Design Icons-Regular:size=10",
 };
+
 static const int colorfultag = 1; // 0 means use SchemeSel for selected non vacant tag
 
-// theme
+// --------------------------------------------- Theme ---------------------------------------------- //
+
 #include "themes/onedark.h"
 
 static const char *colors[][3] = {
-    //              fg         bg         border
+    // [...] = { fb, bg, border }
     [SchemeNorm] = {gray3, black, gray2},
     [SchemeSel] = {gray4, blue, blue},
     [TabSel] = {blue, gray2, black},
@@ -62,27 +69,31 @@ static const char *colors[][3] = {
     [SchemeBtnClose] = {red, black, black},
 };
 
-// tagging
-static char *tags[] = {"", "", "", "", ""};
+// -------------------------------------------- Tagging --------------------------------------------- //
 
 static const char *eww[] = {"eww", "open", "eww", NULL};
 
 static const Launcher launchers[] = {
-    // command       name to display
+    // {command, name to display}
     {eww, ""},
 };
+
+static char *tags[] = {" ", "﬏ ", " ", "ﭮ ", " "};
 
 static const int tagschemes[] = {
     SchemeTag1,
     SchemeTag2,
     SchemeTag3,
     SchemeTag4,
-    SchemeTag5};
+    SchemeTag5,
+};
 
-static const unsigned int ulinepad = 5;     // horizontal padding between the underline and tag
+static const unsigned int ulinepad = 4;     // horizontal padding between the underline and tag
 static const unsigned int ulinestroke = 2;  // thickness / height of the underline
 static const unsigned int ulinevoffset = 0; // how far above the bottom of the bar the line should appear
 static const int ulineall = 0;              // 1 to show underline on all tags, 0 for just the active ones
+
+// --------------------------------------------- Rules ---------------------------------------------- //
 
 static const Rule rules[] = {
     // xprop(1):
@@ -95,7 +106,8 @@ static const Rule rules[] = {
     {"eww", NULL, NULL, 0, 0, 1, -1},
 };
 
-// layout(s)
+// -------------------------------------------- Layouts --------------------------------------------- //
+
 static const float mfact = 0.50;     // factor of master area size [0.05..0.95]
 static const int nmaster = 1;        // number of clients in master area
 static const int resizehints = 0;    // 1 means respect size hints in tiled resizals
@@ -122,7 +134,8 @@ static const Layout layouts[] = {
     {"><>", NULL}, // no layout function means floating behavior
 };
 
-// key definitions
+// ---------------------------------------- Key Definitions ----------------------------------------- //
+
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY, TAG)                                          \
     {MODKEY, KEY, view, {.ui = 1 << TAG}},                         \
@@ -130,56 +143,67 @@ static const Layout layouts[] = {
         {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},          \
         {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
-// helper for spawning shell commands in the pre dwm-5.0 fashion
+// ----------------- Helper for spawning shell commands in the pre dwm-5.0 fashion ------------------ //
+
 #define SHCMD(cmd)                                           \
     {                                                        \
         .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL } \
     }
 
-// commands
-static const char *term[] = {"st", NULL}; // change this to your term
-static const char *rofi[] = {"rofi", "-show", "drun", NULL};
-static const char *xi[] = {"xbacklight", "-inc", "7", NULL};
-static const char *xd[] = {"xbacklight", "-dec", "7", NULL};
+// ------------------------------------------- Commands --------------------------------------------- //
+
+static const char *term[] = {"alacritty", NULL}; // change this to your term
+
+// ----------------------------------------- Keybindings -------------------------------------------- //
+
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
-    // modifier                     key        function        argument
-    {MODKEY, XK_c, spawn, {.v = rofi}},
-    {MODKEY, XK_Return, spawn, {.v = term}},
-    // { MODKEY,                       XK_Return, spawn,          SHCMD("st_pad && st")},
+    // { modifier, key, function, argument }
 
-    {MODKEY | ControlMask, XK_u, spawn, SHCMD("maim | xclip -selection clipboard -t image/png")},
-    {MODKEY, XK_u, spawn, SHCMD("maim --select | xclip -selection clipboard -t image/png")},
-    {0, XF86MonBrightnessDown, spawn, {.v = xd}},
-    {0, XF86MonBrightnessUp, spawn, {.v = xi}},
+    // ------------------------------------------ Windows ------------------------------------------- //
+
+    // Toggle bar
     {MODKEY, XK_b, togglebar, {0}},
+
+    // Toggle full screen mode
     {MODKEY | ControlMask, XK_w, tabmode, {-1}},
+
+    // Switch between windows
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
-    {MODKEY, XK_i, incnmaster, {.i = +1}},
-    {MODKEY, XK_d, incnmaster, {.i = -1}},
+
+    // Adjust window width
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
+
+    // Adjust window heigth
     {MODKEY | ShiftMask, XK_h, setcfact, {.f = +0.25}},
     {MODKEY | ShiftMask, XK_l, setcfact, {.f = -0.25}},
-    {MODKEY | ShiftMask, XK_o, setcfact, {.f = 0.00}},
+
+    // Move windows in current stack
     {MODKEY | ShiftMask, XK_j, movestack, {.i = +1}},
     {MODKEY | ShiftMask, XK_k, movestack, {.i = -1}},
-    {MODKEY, XK_Return, zoom, {0}},
-    {MODKEY, XK_Tab, view, {0}},
 
-    // overall gaps
+    // Focus next - prev monitor
+    {MODKEY, XK_comma, focusmon, {.i = -1}},
+    {MODKEY, XK_period, focusmon, {.i = +1}},
+
+    // Send window to next - prev monitor
+    {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
+    {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+
+    // Adjust Overall gaps
     {MODKEY | ControlMask, XK_i, incrgaps, {.i = +1}},
     {MODKEY | ControlMask, XK_d, incrgaps, {.i = -1}},
 
-    // inner gaps
+    // Adjust Inner gaps
     {MODKEY | ShiftMask, XK_i, incrigaps, {.i = +1}},
     {MODKEY | ControlMask | ShiftMask, XK_i, incrigaps, {.i = -1}},
 
-    // outer gaps
+    // Adjust Outer gaps
     {MODKEY | ControlMask, XK_o, incrogaps, {.i = +1}},
     {MODKEY | ControlMask | ShiftMask, XK_o, incrogaps, {.i = -1}},
-
     {MODKEY | ControlMask, XK_6, incrihgaps, {.i = +1}},
     {MODKEY | ControlMask | ShiftMask, XK_6, incrihgaps, {.i = -1}},
     {MODKEY | ControlMask, XK_7, incrivgaps, {.i = +1}},
@@ -189,29 +213,43 @@ static Key keys[] = {
     {MODKEY | ControlMask, XK_9, incrovgaps, {.i = +1}},
     {MODKEY | ControlMask | ShiftMask, XK_9, incrovgaps, {.i = -1}},
 
-    {MODKEY | ControlMask, XK_t, togglegaps, {0}},
+    // Default gaps
     {MODKEY | ControlMask | ShiftMask, XK_d, defaultgaps, {0}},
 
-    {MODKEY, XK_q, killclient, {0}},
-    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY | ShiftMask, XK_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY | ControlMask, XK_g, setlayout, {.v = &layouts[10]}},
-    {MODKEY | ControlMask | ShiftMask, XK_t, setlayout, {.v = &layouts[13]}},
-    {MODKEY, XK_space, setlayout, {0}},
+    // Adjust window border
+    {MODKEY | ShiftMask, XK_p, setborderpx, {.i = +1}},
+    {MODKEY | ShiftMask, XK_minus, setborderpx, {.i = -1}},
+
+    // Change the format of layouts
+    {MODKEY, XK_i, incnmaster, {.i = +1}},
+    {MODKEY, XK_d, incnmaster, {.i = -1}},
+
+    // Reset window border
+    {MODKEY | ShiftMask, XK_w, setborderpx, {.i = default_border}},
+
+    // Cycle layouts
     {MODKEY | ControlMask, XK_comma, cyclelayout, {.i = -1}},
     {MODKEY | ControlMask, XK_period, cyclelayout, {.i = +1}},
-    {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
+
+    // Kill window
+    {MODKEY, XK_q, killclient, {0}},
+
+    // Full screen
     {MODKEY, XK_f, togglefullscr, {0}},
-    {MODKEY, XK_0, view, {.ui = ~0}},
-    {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
-    {MODKEY, XK_comma, focusmon, {.i = -1}},
-    {MODKEY, XK_period, focusmon, {.i = +1}},
-    {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
-    {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-    {MODKEY | ShiftMask, XK_minus, setborderpx, {.i = -1}},
-    {MODKEY | ShiftMask, XK_p, setborderpx, {.i = +1}},
-    {MODKEY | ShiftMask, XK_w, setborderpx, {.i = default_border}},
+
+    // Focus screen
+    {MODKEY, XK_space, zoom, {0}},
+
+    // Toggle floating
+    {MODKEY | ShiftMask, XK_f, togglefloating, {0}},
+
+    // Restart dwm
+    {MODKEY | ControlMask, XK_r, quit, {1}},
+
+    // Quit dwm
+    {MODKEY | ControlMask, XK_q, quit, {0}},
+
+    // ----------------------------------------- Workspaces ----------------------------------------- //
 
     TAGKEYS(XK_1, 0)
         TAGKEYS(XK_2, 1)
@@ -221,35 +259,78 @@ static Key keys[] = {
                         TAGKEYS(XK_6, 5)
                             TAGKEYS(XK_7, 6)
                                 TAGKEYS(XK_8, 7)
-                                    TAGKEYS(XK_9, 8){
-                                        MODKEY | ControlMask, XK_q, quit, {0}},
-    {MODKEY | ShiftMask, XK_r, quit, {1}},
-    {MODKEY, XK_e, hidewin, {0}},
-    {MODKEY | ShiftMask, XK_e, restorewin, {0}},
+                                    TAGKEYS(XK_9, 8)
 
+    // ---------------------------------------- Applications ---------------------------------------- //
+
+    // Apps
+    {MODKEY, XK_m, spawn, SHCMD("rofi -show drun")},
+
+    // Windows
+    {MODKEY | ShiftMask, XK_m, spawn, SHCMD("rofi -show window")},
+
+    // Emojis
+    {MODKEY | ShiftMask, XK_e, spawn, SHCMD("rofi -show emoji")},
+
+    // Terminal
+    {MODKEY, XK_Return, spawn, {.v = term}},
+
+    // Browser
+    {MODKEY, XK_w, spawn, SHCMD("google-chrome-stable")},
+
+    // File Explorer
+    {MODKEY, XK_e, spawn, SHCMD("pcmanfm")},
+
+    // Editor
+    {MODKEY, XK_c, spawn, SHCMD("code")},
+
+    // Database Manager
+    {MODKEY | ShiftMask, XK_c, spawn, SHCMD("beekeeper-studio")},
+
+    // Redshift
+    {MODKEY, XK_r, spawn, SHCMD("redshift -O 6000")},
+    {MODKEY | ShiftMask, XK_r, spawn, SHCMD("redshift -x")},
+
+    // Screenshot
+    {MODKEY, XK_s, spawn, SHCMD("flameshot gui")},
+
+    // Screenshot with delay
+    {MODKEY | ShiftMask, XK_s, spawn, SHCMD("scrot -u -d 3")},
+
+    // ------------------------------------------ Hardware ------------------------------------------ //
+
+    // Volume
+    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -2%")},
+    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +2%")},
+    {0, XF86XK_AudioMute, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+
+    // Brightness
+    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +2%")},
+    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 2%-")},
 };
 
-// button definitions
+// -------------------------------------- Button Definitions ---------------------------------------- //
+
 // click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin
 static Button buttons[] = {
-    // click                event mask      button          function        argument
+    // { click, event mask, button, function, argument }
     {ClkLtSymbol, 0, Button1, setlayout, {0}},
     {ClkLtSymbol, 0, Button3, setlayout, {.v = &layouts[2]}},
     {ClkWinTitle, 0, Button2, zoom, {0}},
     {ClkStatusText, 0, Button2, spawn, {.v = term}},
 
     // Keep movemouse?
-    // { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+    // { ClkClientWin, MODKEY, Button1, movemouse, {0} },
 
-    // placemouse options, choose which feels more natural:
-    //     *    0 - tiled position is relative to mouse cursor
-    //     *    1 - tiled postiion is relative to window center
-    //     *    2 - mouse pointer warps to window center
-    //     *
-    //     * The moveorplace uses movemouse or placemouse depending on the floating state
-    //     * of the selected client. Set up individual keybindings for the two if you want
-    //     * to control these separately (i.e. to retain the feature to move a tiled window
-    //     * into a floating position).
+    // Placemouse options, choose which feels more natural:
+    //     * 0 - tiled position is relative to mouse cursor
+    //     * 1 - tiled postiion is relative to window center
+    //     * 2 - mouse pointer warps to window center
+    //
+    // The moveorplace uses movemouse or placemouse depending on the floating state
+    // of the selected client. Set up individual keybindings for the two if you want
+    // to control these separately (i.e. to retain the feature to move a tiled window
+    // into a floating position).
 
     {ClkClientWin, MODKEY, Button1, moveorplace, {.i = 0}},
     {ClkClientWin, MODKEY, Button2, togglefloating, {0}},
