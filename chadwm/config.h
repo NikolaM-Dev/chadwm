@@ -1,15 +1,16 @@
 #define XF86MonBrightnessDown 0x1008ff03
 #define XF86MonBrightnessUp 0x1008ff02
 
-// appearance
-static const unsigned int borderpx = 0;       // border pixel of windows
+// ------------------------------------------- Appearance ------------------------------------------- //
+
+static const unsigned int borderpx = 1;       // border pixel of windows
 static const unsigned int default_border = 0; // to switch back to default border after dynamic border resizing via keybinds
 static const unsigned int snap = 32;          // snap pixel
-static const unsigned int gappih = 10;        // horiz inner gap between windows
-static const unsigned int gappiv = 10;        // vert inner gap between windows
-static const unsigned int gappoh = 10;        // horiz outer gap between windows and screen edge
-static const unsigned int gappov = 10;        // vert outer gap between windows and screen edge
-static int smartgaps = 0;                     // 1 means no outer gap when there is only one window
+static const unsigned int gappih = 0;         // horiz inner gap between windows
+static const unsigned int gappiv = 0;         // vert inner gap between windows
+static const unsigned int gappoh = 0;         // horiz outer gap between windows and screen edge
+static const unsigned int gappov = 0;         // vert outer gap between windows and screen edge
+static int smartgaps = 1;                     // 1 means no outer gap when there is only one window
 static const unsigned int systraypinning = 0; // 0: sloppy systray follows selected monitor, >0: pin systray to monitor X
 static const unsigned int systrayspacing = 2; // systray spacing
 static const int systraypinningfailfirst = 1; // 1: if pinning fails,display systray on the 1st monitor,False: display systray on last monitor
