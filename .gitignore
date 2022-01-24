@@ -1,6 +1,8 @@
+.vscode
 *.diff
+*.o
 *.orig
 *.rej
-*.o
+autoscan.log
+configure.scan
 dwm
-.vscode
