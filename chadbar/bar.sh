@@ -6,40 +6,50 @@
 interval=0
 
 # load colors
-. ~/.config/chadwm/scripts/bar_themes/onedark
-
-cpu() {
-	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
-
-	printf "^c$black^ ^b$green^ CPU"
-	printf "^c$white^ ^b$grey^ $cpu_val"
-}
+. ~/.config/chadwm/chadbar/themes/onedark
 
 pkg_updates() {
-	updates=$(doas xbps-install -un | wc -l) # void
-	# updates=$(checkupdates | wc -l)   # arch , needs pacman contrib
+	# updates=$(doas xbps-install -un | wc -l) # void
+	updates=$(checkupdates | wc -l) # arch , needs pacman contrib
 	# updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
 
-	if [ -z "$updates" ]; then
-		printf "^c$green^  Fully Updated"
+	if [ "$updates" = 0 ]; then
+		printf "^c$green^ fully updated"
 	else
-		printf "^c$green^  $updates"" updates"
+		printf "^c$green^ %s updates" "$updates"
 	fi
 }
 
 battery() {
-	get_capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
-	printf "^c$blue^   $get_capacity"
+	# If this script doesn't work look at the output of upower -e and upower -d
+	get_capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+	printf "^c$blue^ ﴞ %s" "$get_capacity"
 }
 
 brightness() {
-	printf "^c$red^   "
-	printf "^c$red^%.0f\n" $(cat /sys/class/backlight/*/brightness)
+	printf "^c$red^  %.0f\n" "$(cat /sys/class/backlight/*/brightness)"
+}
+
+volume() {
+	vol=$(pamixer --get-volume)
+	is_mute=$(pamixer --get-mute)
+
+	if [ "$is_mute" = "true" ]; then
+		printf "^c$green^  %s" "$vol"
+	else
+		printf "^c$green^  %s" "$vol"
+	fi
+}
+
+cpu() {
+	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
+
+	printf "^c$blue^ ﴮ %s" "$cpu_val"
 }
 
 mem() {
-	printf "^c$blue^^b$black^  "
-	printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+	printf "^c$red^   %s" "$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
@@ -50,14 +60,13 @@ wlan() {
 }
 
 clock() {
-	printf "^c$black^ ^b$darkblue^ 󱑆 "
-	printf "^c$black^^b$blue^ $(date '+%I:%M %p')  "
+	printf "^c$blue^󱑆 %s" "$(date '+%I:%M %p ╷ %d.%m.%y') "
 }
 
 while true; do
 
-	[ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
+	[ $interval = 0 ] || [ $((interval % 3600)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
 
-	sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
+	sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(volume) $(cpu) $(mem) $(clock)"
 done
