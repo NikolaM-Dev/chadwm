@@ -1,6 +1,8 @@
-chadwm/dwm 
-chadwm/config.h 
-chadwm/*.o
-chadwm/*.orig
-chadwm/*.rej
-.ccls-cache/
+.vscode
+*.diff
+*.o
+*.orig
+*.rej
+autoscan.log
+configure.scan
+dwm
