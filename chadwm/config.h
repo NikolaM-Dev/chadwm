@@ -27,7 +27,7 @@ enum showtab_modes
     showtab_always
 };
 
-static const int showtab = showtab_auto;
+static const int showtab = showtab_never;
 static const int toptab = True;
 static const int topbar = 1; // 0 means bottom bar
 static const int horizpadbar = 5;
@@ -72,11 +72,7 @@ static const char *colors[][3] = {
 // -------------------------------------------- Tagging --------------------------------------------- //
 
 static const char *eww[] = {"eww", "open", "eww", NULL};
-
-static const Launcher launchers[] = {
-    // {command, name to display}
-    {eww, ""},
-};
+static const Launcher launchers[] = {{eww, ""}};
 
 static char *tags[] = {" ", "﬏ ", " ", "ﭮ ", " "};
 
@@ -287,7 +283,10 @@ static Key keys[] = {
     {MODKEY, XK_c, spawn, SHCMD("code")},
 
     // Database Manager
-    {MODKEY | ShiftMask, XK_c, spawn, SHCMD("beekeeper-studio")},
+    {MODKEY | ShiftMask, XK_d, spawn, SHCMD("beekeeper-studio")},
+
+    // Postman
+    {MODKEY, XK_p, spawn, SHCMD("postman")},
 
     // Redshift
     {MODKEY, XK_r, spawn, SHCMD("redshift -O 6000")},
