@@ -72,7 +72,7 @@ static const char *colors[][3] = {
 // -------------------------------------------- Tagging --------------------------------------------- //
 
 static const char *eww[] = {"eww", "open", "eww", NULL};
-static const Launcher launchers[] = {{eww, ""}};
+static const Launcher launchers[] = {{eww, ""}};
 
 static char *tags[] = {" ", "﬏ ", " ", "ﭮ ", " "};
 
@@ -116,12 +116,15 @@ static const int lockfullscreen = 1; // 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
     // { symbol, arrange function }
-    {"[]", tile}, // first entry is default
-    {"[M]", monocle},
-    {"[@]", spiral},
-    {"[\\]", dwindle},
-    {"H[]", deck},
-    {"TTT", bstack},
+    {"[]", tile},      // Default: Master on left, slaves on right
+    {"[TTT]", bstack}, // Master on top, slaves on bottom
+
+    {"[@]", spiral},   // Fibonacci spiral
+    {"[\\]", dwindle}, // Decreasing in size right and leftward
+
+    {"D 0", doubledeck}, // Master on left, slaves in monocle-like mode on right
+    {"[M]", monocle},    // All windows on top of eachother
+
     {"===", bstackhoriz},
     {"HHH", grid},
     {"###", nrowgrid},
@@ -129,7 +132,9 @@ static const Layout layouts[] = {
     {":::", gaplessgrid},
     {"|M|", centeredmaster},
     {">M>", centeredfloatingmaster},
-    {"><>", NULL}, // no layout function means floating behavior
+
+    {"><>", NULL}, // No layout function means floating behavior
+    {NULL, NULL},  // Exclude designs from the rules
 };
 
 // ---------------------------------------- Key Definitions ----------------------------------------- //
@@ -222,12 +227,19 @@ static Key keys[] = {
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
 
+    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},             // tile
+    {MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[1]}}, // bstack
+    {MODKEY, XK_y, setlayout, {.v = &layouts[2]}},             // spiral
+    {MODKEY | ShiftMask, XK_y, setlayout, {.v = &layouts[3]}}, // dwindle
+    {MODKEY, XK_u, setlayout, {.v = &layouts[4]}},             // deck
+    {MODKEY | ShiftMask, XK_u, setlayout, {.v = &layouts[5]}}, // monocle
+
     // Reset window border
     {MODKEY | ShiftMask, XK_w, setborderpx, {.i = default_border}},
 
     // Cycle layouts
-    {MODKEY | ControlMask, XK_comma, cyclelayout, {.i = -1}},
-    {MODKEY | ControlMask, XK_period, cyclelayout, {.i = +1}},
+    {MODKEY, XK_Tab, cyclelayout, {.i = +1}},
+    {MODKEY | ShiftMask, XK_Tab, cyclelayout, {.i = -1}},
 
     // Kill window
     {MODKEY, XK_q, killclient, {0}},
