@@ -1,92 +1,86 @@
-# chadwm (Initial look)
+<h1 align="center">🌌 Chadwm</h1>
 
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/initial_look.png">
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/col_layout.png">
+<p align="center">
+  <a href="https://dwm.suckless.org/">dwm</a> configuration for a productive development with beautiful ui/ux
+</p>
 
-<img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/occ_act_tags.png">
-(empty workspaces have their color greyed out)
+<img align="center" src="./screenshots/chadwm-30-01-22.png" alt="Chadwm">
 
-- NOTE: This is vanilla dwm bar (status2d patch for setting colors) not dwmblocks or polybar.
-  <img src="https://github.com/siduck/chadwm/blob/screenshots/screenshots/chadwm.png">
-- The small widget over the top right is an eww widget and thats old! Ive improved the eww widget
-  <img src='https://i.redd.it/t1pvmqlq3oc81.png'>
-  (catppuccin theme)
+<br/>
 
-# Tag preview (while hovering tag icon)
-
-https://user-images.githubusercontent.com/59060246/128050994-17f46934-6604-4430-bece-f60b0700b6be.mp4
-
-# Requirements
+## Requirements
 
 - dash (shell)
 - imlib2
 - xsetroot package ( status2d uses this to add colors on dwmbar)
 - JetbrainsMono Nerd Font (or any nerd font) and Material design icon font
 
-# Setup
+## Setup
 
 ```
-git clone https://github.com/siduck/chadwm --depth 1
-mv chadwm ~/.config
-cd ~/.config/chadwm/chadwm
-sudo make install
+cd ~/.config
+git clone git@github.com:NikolaM-Dev/chadwm.git
+cd chadwm/chadwm
+sudo make clean install
 ```
 
-- copy the stuff from fonts folder to your ~/.local/share/fonts
-- autostart script in the scripts dir is just an example one so it must be adjusted for your liking!
+- Copy the stuff from fonts folder to your ~/.local/share/fonts
 
-# Run chadwm
+## Run chadwm
 
 Run the autostart file from .xinitrc
 
 (.xinitrc file)
 
-```
+```sh
 #!/bin/sh
 
-exec ~/.config/chadwm/scripts/./autostart
+exec ~/.config/chadwm/chadwm/./autostart.sh
 ```
 
 OR
 
 Create a desktop entry
 
-```
+```sh
 touch /usr/share/xsessions/chadwm.desktop
 ```
 
-```
+```sh
 [Desktop Entry]
-Name=chadwm
-Comment=dwm made beautiful
-Exec= ~/.config/chadwm/scripts/./autostart
-Type=Application
+Encoding=UTF-8
+Name=Chadwm
+Comment=Dynamic window manager
+Exec=~/.config/chadwm/chadwm/./autostart.sh
+Icon=dwm
+Type=XSession
 ```
 
-- [wallpaper](https://github.com/siduck/chadwm/blob/screenshots/screenshots/chad.png)
+## Wallpaper
 
-# Recompile
+- [chad](https://github.com/NikolaM-Dev/chadwm/blob/main/wallpapers/chad-23-01-22.png)
+
+## Recompile
 
 - You need to recompile dwm after every change you make in its src code
 
 ```
 cd ~/.config/chadwm/chadwm
-rm config.h
-sudo make install
+sudo make clean install
 ```
 
-# Change themes
+## Change themes
 
-- Bar : in bar.sh and config.def.h
-- eww : in eww.scss
-- rofi : in config.rasi
+- Chadbar : in bar.sh
+- Chadwm : in config.def.h
 
-# Credits
+## Credits
 
-- HUGE THANKS to [eProTaLT83](https://www.reddit.com/user/eProTaLT83). I wanted certain features in dwm like tabbar in monocle , tagpreview etc and he implemented my ideas and created patches for me! I cant even count the number of times he has helped me :v
-- @fitrh helped with [colorful tag patch](https://github.com/fitrh/dwm/issues/1)
+- [**eProTaLT3**](https://www.reddit.com/user/eProTaLT83)
+- **@fitrh**
+- [**siduck**](https://github.com/siduck)
 
-# Patches
+## Patches
 
 - barpadding
 - bottomstack
@@ -103,3 +97,11 @@ sudo make install
 - status2d
 - underline tags
 - notitle
+
+## ©️ Copyright
+
+**`LICENSE`**
+
+Check the file [here](./LICENSE)
+
+<p align="center">⌨️ with ❤️ by <a href="https://github.com/NikolaM-Dev"><strong>NikolaM-Dev</strong><a></p>
