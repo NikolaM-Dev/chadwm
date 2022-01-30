@@ -1,12 +1,10 @@
 <h1 align="center">🌌 Chadwm</h1>
 
 <p align="center">
-  <a href="https://dwm.suckless.org/">dwm</a> configuration for a productive development with beautiful ui/ux
+  <a href="https://dwm.suckless.org/">dwm</a> setup for a productive development with beautiful ui/ux
 </p>
 
 <img align="center" src="./screenshots/chadwm-30-01-22.png" alt="Chadwm">
-
-<br/>
 
 ## Requirements
 
@@ -100,7 +98,7 @@ sudo make clean install
 
 ## ©️ Copyright
 
-**`LICENSE`**
+**`LICENSE`**: MIT/X Consortium License
 
 Check the file [here](./LICENSE)
 
