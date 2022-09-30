@@ -286,7 +286,7 @@ static Key keys[] = {
     {MODKEY, XK_Return, spawn, {.v = term}},
 
     // Browser
-    {MODKEY, XK_w, spawn, SHCMD("firefox")},
+    {MODKEY, XK_w, spawn, SHCMD("google-chrome-stable")},
 
     // File Explorer
     {MODKEY, XK_e, spawn, SHCMD("pcmanfm")},
