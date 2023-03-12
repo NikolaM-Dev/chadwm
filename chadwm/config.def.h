@@ -294,6 +294,9 @@ static Key keys[] = {
     // Editor
     {MODKEY, XK_c, spawn, SHCMD("code")},
 
+    // Anki
+    {MODKEY, XK_c, spawn, SHCMD("anki")},
+
     // Database Manager
     {MODKEY | ShiftMask, XK_d, spawn, SHCMD("beekeeper-studio")},
 
