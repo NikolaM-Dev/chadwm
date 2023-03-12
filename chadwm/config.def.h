@@ -300,6 +300,7 @@ static Key keys[] = {
     // Database Manager
     {MODKEY | ShiftMask, XK_d, spawn, SHCMD("beekeeper-studio")},
 
+    // TODO: Change to insomnia
     // Postman
     {MODKEY, XK_p, spawn, SHCMD("postman")},
 
