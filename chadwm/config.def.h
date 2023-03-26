@@ -283,7 +283,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_e, spawn, SHCMD("rofi -show emoji")},
 
     // Terminal
-    {MODKEY, XK_Return, spawn, {.v = term}},
+    {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("alacritty")},
+    {MODKEY, XK_Return, spawn, SHCMD("alacritty -e tmux")},
 
     // Browser
     {MODKEY, XK_w, spawn, SHCMD("google-chrome-stable")},
