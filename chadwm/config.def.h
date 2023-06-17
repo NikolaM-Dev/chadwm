@@ -155,7 +155,7 @@ static const Layout layouts[] = {
 
 // ------------------------------------------- Commands --------------------------------------------- //
 
-static const char *term[] = {"kitty", NULL}; // change this to your term
+static const char *term[] = {"wezterm", NULL}; // change this to your term
 
 // ----------------------------------------- Keybindings -------------------------------------------- //
 
@@ -283,8 +283,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_e, spawn, SHCMD("rofi -show emoji")},
 
     // Terminal
-    {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("kitty")},
-    {MODKEY, XK_Return, spawn, SHCMD("-e tmux")},
+    {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("wezterm")},
+    {MODKEY, XK_Return, spawn, SHCMD("wezterm -e tmux")},
 
     // Browser
     {MODKEY, XK_w, spawn, SHCMD("google-chrome-stable")},
