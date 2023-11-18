@@ -41,7 +41,7 @@ static int tag_preview = 0; // 1 means enable, 0 is off
 // --------------------------------------------- Fonts ---------------------------------------------- //
 
 static const char *fonts[] = {
-    "JetBrainsMono Nerd Font:style:medium:size=10",
+    "JetBrainsMono NF:style:medium:size=10",
     "Material Design Icons-Regular:size=10",
 };
 
