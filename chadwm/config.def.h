@@ -306,8 +306,8 @@ static Key keys[] = {
     // Database Manager
     {MODKEY | ShiftMask, XK_d, spawn, SHCMD("beekeeper-studio")},
 
-    // Insomnia
-    {MODKEY, XK_p, spawn, SHCMD("/opt/insomnia/insomnia")},
+    // Rest Client
+    {MODKEY, XK_p, spawn, SHCMD("postman")},
 
     // Redshift
     {MODKEY, XK_r, spawn, SHCMD("redshift -O 6000")},
