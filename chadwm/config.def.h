@@ -292,8 +292,8 @@ static Key keys[] = {
     {MODKEY, XK_Return, spawn, SHCMD("alacritty -e tmux")},
 
     // Browser
-    {MODKEY | ShiftMask, XK_w, spawn, SHCMD("brave")},
-    {MODKEY, XK_w, spawn, SHCMD("google-chrome-stable")},
+    {MODKEY | ShiftMask, XK_w, spawn, SHCMD("google-chrome-stable")},
+    {MODKEY, XK_w, spawn, SHCMD("brave")},
 
     // File Explorer
     {MODKEY, XK_e, spawn, SHCMD("pcmanfm")},
