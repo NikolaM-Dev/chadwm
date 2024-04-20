@@ -232,12 +232,12 @@ static Key keys[] = {
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
 
-    {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},             // tile
-    {MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[1]}}, // bstack
-    {MODKEY, XK_y, setlayout, {.v = &layouts[2]}},             // spiral
-    {MODKEY | ShiftMask, XK_y, setlayout, {.v = &layouts[3]}}, // dwindle
-    {MODKEY, XK_u, setlayout, {.v = &layouts[4]}},             // deck
-    {MODKEY | ShiftMask, XK_u, setlayout, {.v = &layouts[5]}}, // monocle
+    {MODKEY, XK_u, setlayout, {.v = &layouts[0]}},             // doubledeck
+    {MODKEY | ShiftMask, XK_u, setlayout, {.v = &layouts[1]}}, // monocle
+    {MODKEY, XK_y, setlayout, {.v = &layouts[2]}},             // tile
+    {MODKEY | ShiftMask, XK_y, setlayout, {.v = &layouts[3]}}, // bstack
+    {MODKEY, XK_t, setlayout, {.v = &layouts[4]}},             // spiral
+    {MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[5]}}, // dwindle
 
     // Reset window border
     {MODKEY | ShiftMask, XK_w, setborderpx, {.i = default_border}},
