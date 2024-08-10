@@ -74,7 +74,7 @@ static const char *colors[][3] = {
 static const char *eww[] = {"eww", "open", "eww", NULL};
 static const Launcher launchers[] = {{eww, ""}};
 
-static char *tags[] = {" ", "󰗚 ", "󰔲 ", " ", " ", "󰯈", "󰯈", "󱗖", ""};
+static char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const int tagschemes[] = {
     SchemeTag1,
