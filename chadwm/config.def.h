@@ -121,25 +121,25 @@ static const int lockfullscreen = 1; // 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
     // { symbol, arrange function }
-    {"D 0", doubledeck}, // Master on left, slaves in monocle-like mode on right
-    {"[M]", monocle},    // All windows on top of eachother
+    { "D 0",   doubledeck             }, // Master on left, slaves in monocle-like mode on right
+    { "[M]",   monocle                },    // All windows on top of eachother
 
-    {"[]", tile},      // Default: Master on left, slaves on right
-    {"[TTT]", bstack}, // Master on top, slaves on bottom
+    { "[]",    tile                   },      // Default: Master on left, slaves on right
+    { "[TTT]", bstack                 }, // Master on top, slaves on bottom
 
-    {"[@]", spiral},   // Fibonacci spiral
-    {"[\\]", dwindle}, // Decreasing in size right and leftward
+    { "[@]",   spiral                 },   // Fibonacci spiral
+    { "[\\]",  dwindle                }, // Decreasing in size right and leftward
 
-    {"===", bstackhoriz},
-    {"HHH", grid},
-    {"###", nrowgrid},
-    {"---", horizgrid},
-    {":::", gaplessgrid},
-    {"|M|", centeredmaster},
-    {">M>", centeredfloatingmaster},
+    { "===",   bstackhoriz            },
+    { "HHH",   grid                   },
+    { "###",   nrowgrid               },
+    { "---",   horizgrid              },
+    { ":::",   gaplessgrid            },
+    { "|M|",   centeredmaster         },
+    { ">M>",   centeredfloatingmaster },
 
-    {"><>", NULL}, // No layout function means floating behavior
-    {NULL, NULL},  // Exclude designs from the rules
+    { "><>",   NULL                   }, // No layout function means floating behavior
+    { NULL,    NULL                   },  // Exclude designs from the rules
 };
 
 // ---------------------------------------- Key Definitions ----------------------------------------- //
