@@ -36,9 +36,9 @@ volume() {
 	is_mute=$(pamixer --get-mute)
 
 	if [ "$is_mute" = "true" ]; then
-		printf "^c$green^ 󰎊 %s" "$vol"
+		printf "^c$green^ 󰝚 mute"
 	else
-		printf "^c$green^ 󰎆 %s" "$vol"
+		printf "^c$green^ 󰝚 %s" "$vol"
 	fi
 }
 
