@@ -14,9 +14,9 @@ pkg_updates() {
 	# updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
 
 	if [ "$updates" = 0 ]; then
-		printf "^c$green^ fully updated"
+		printf "^c$green^  fully updated"
 	else
-		printf "^c$green^ %s updates" "$updates"
+		printf "^c$green^  %s updates" "$updates"
 	fi
 }
 
