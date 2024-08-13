@@ -60,7 +60,7 @@ wlan() {
 }
 
 clock() {
-	printf "^c$blue^ %s" "$(date '+%I:%M %p ╷ %d.%m.%y') "
+	printf "^c$blue^ %s" "$(date '+%H:%M:%S ╷ %d.%m.%Y | %a') "
 }
 
 while true; do
