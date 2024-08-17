@@ -228,8 +228,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_minus, setborderpx, {.i = -1}},
 
     // Change the format of layouts
-    {MODKEY, XK_i, incnmaster, {.i = +1}},
-    {MODKEY, XK_d, incnmaster, {.i = -1}},
+    // {MODKEY, XK_i, incnmaster, {.i = +1}},
+    // {MODKEY, XK_d, incnmaster, {.i = -1}},
 
     {MODKEY, XK_u, setlayout, {.v = &layouts[0]}},             // doubledeck
     {MODKEY | ShiftMask, XK_u, setlayout, {.v = &layouts[1]}}, // monocle
