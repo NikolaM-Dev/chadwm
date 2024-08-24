@@ -288,7 +288,7 @@ static Key keys[] = {
 
     // Terminal
     {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("wezterm")},
-    {MODKEY, XK_Return, spawn, SHCMD("pkill tmux; wezterm -e n-start-tmux")},
+    {MODKEY, XK_Return, spawn, SHCMD("wezterm -e n-start-tmux")},
 
     // Browser
     {MODKEY | ShiftMask, XK_w, spawn, SHCMD("google-chrome-stable")},
