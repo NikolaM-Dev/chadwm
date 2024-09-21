@@ -301,6 +301,9 @@ static Key keys[] = {
     // Editor
     {MODKEY, XK_c, spawn, SHCMD("code")},
 
+    // TickTick
+    {MODKEY, XK_t, spawn, SHCMD("chromium --app='https://ticktick.com'")},
+
     // Anki
     {MODKEY, XK_a, spawn, SHCMD("anki")},
 
