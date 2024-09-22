@@ -235,8 +235,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_u, setlayout, {.v = &layouts[1]}}, // monocle
     {MODKEY, XK_y, setlayout, {.v = &layouts[2]}},             // tile
     {MODKEY | ShiftMask, XK_y, setlayout, {.v = &layouts[3]}}, // bstack
-    {MODKEY, XK_t, setlayout, {.v = &layouts[4]}},             // spiral
-    {MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[5]}}, // dwindle
+    // {MODKEY, XK_t, setlayout, {.v = &layouts[4]}},             // spiral
+    // {MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[5]}}, // dwindle
 
     // Reset window border
     {MODKEY | ShiftMask, XK_w, setborderpx, {.i = default_border}},
