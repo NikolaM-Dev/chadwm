@@ -298,8 +298,8 @@ static Key keys[] = {
     // File Explorer
     {MODKEY, XK_e, spawn, SHCMD("pcmanfm")},
 
-    // Editor
-    {MODKEY, XK_c, spawn, SHCMD("code")},
+    // Calc
+    {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
 
     // TickTick
     {MODKEY, XK_t, spawn, SHCMD("chromium --app='https://ticktick.com'")},
