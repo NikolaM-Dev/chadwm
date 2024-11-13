@@ -314,7 +314,7 @@ static Key keys[] = {
     {MODKEY, XK_p, spawn, SHCMD("postman")},
 
     // Redshift
-    {MODKEY, XK_r, spawn, SHCMD("redshift -O 6000")},
+    {MODKEY, XK_r, spawn, SHCMD("redshift -O 3500")},
     {MODKEY | ShiftMask, XK_r, spawn, SHCMD("redshift -x")},
 
     // Screenshot
