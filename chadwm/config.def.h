@@ -302,7 +302,7 @@ static Key keys[] = {
     {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
 
     // TickTick
-    {MODKEY, XK_t, spawn, SHCMD("chromium --app='https://ticktick.com'")},
+    {MODKEY, XK_t, spawn, SHCMD("ticktick")},
 
     // Anki
     {MODKEY, XK_a, spawn, SHCMD("anki")},
