@@ -290,8 +290,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("wezterm")},
     {MODKEY, XK_Return, spawn, SHCMD("wezterm -e n-start-tmux")},
 
-    // Browser
-    {MODKEY | ShiftMask, XK_w, spawn, SHCMD("google-chrome-stable")},
+    // Browsers
+    {MODKEY | ShiftMask, XK_w, spawn, SHCMD("chromium")},
     {MODKEY, XK_w, spawn, SHCMD("brave")},
     {MODKEY, XK_z, spawn, SHCMD("zen-browser")},
 
