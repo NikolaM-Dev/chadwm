@@ -293,7 +293,7 @@ static Key keys[] = {
     // Browser
     {MODKEY | ShiftMask, XK_w, spawn, SHCMD("google-chrome-stable")},
     {MODKEY, XK_w, spawn, SHCMD("brave")},
-    {MODKEY, XK_z, spawn, SHCMD("zen")},
+    {MODKEY, XK_z, spawn, SHCMD("zen-browser")},
 
     // File Explorer
     {MODKEY, XK_e, spawn, SHCMD("pcmanfm")},
