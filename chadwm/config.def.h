@@ -308,7 +308,8 @@ static Key keys[] = {
     {MODKEY, XK_a, spawn, SHCMD("anki")},
 
     // Database Manager
-    {MODKEY, XK_d, spawn, SHCMD("beekeeper-studio")},
+    {MODKEY, XK_d, spawn, SHCMD("dbeaver")},
+    {MODKEY | ShiftMask, XK_d, spawn, SHCMD("beekeeper-studio")},
 
     // Rest Client
     {MODKEY, XK_p, spawn, SHCMD("postman")},
