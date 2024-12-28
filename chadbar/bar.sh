@@ -13,11 +13,7 @@ pkg_updates() {
 	updates=$(checkupdates | wc -l) # arch , needs pacman-contrib
 	# updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
 
-	if [ "$updates" = 0 ]; then
-		printf "^c$green^  fully updated"
-	else
-		printf "^c$green^  %s updates" "$updates"
-	fi
+	printf "^c$green^   %02d" $updates
 }
 
 battery() {
