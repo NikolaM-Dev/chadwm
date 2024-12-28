@@ -307,6 +307,9 @@ static Key keys[] = {
     // Anki
     {MODKEY, XK_a, spawn, SHCMD("anki")},
 
+    {MODKEY | ControlMask, XK_a, spawn, SHCMD("pamixer --increase 2")},
+    {MODKEY | ControlMask, XK_x, spawn, SHCMD("pamixer --decrease 2")},
+
     // Database Manager
     {MODKEY, XK_d, spawn, SHCMD("dbeaver")},
     {MODKEY | ShiftMask, XK_d, spawn, SHCMD("beekeeper-studio")},
