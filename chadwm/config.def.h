@@ -301,6 +301,9 @@ static Key keys[] = {
     // Calc
     {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
 
+    // Clock
+    {MODKEY | ControlMask, XK_c, spawn, SHCMD("gnome-clocks")},
+
     // TickTick
     {MODKEY, XK_t, spawn, SHCMD("ticktick")},
 
