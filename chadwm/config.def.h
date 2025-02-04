@@ -306,6 +306,7 @@ static Key keys[] = {
 
     // TickTick
     {MODKEY, XK_t, spawn, SHCMD("ticktick")},
+    {MODKEY, XK_o, spawn, SHCMD("obsidian")},
 
     // Anki
     {MODKEY, XK_a, spawn, SHCMD("anki")},
