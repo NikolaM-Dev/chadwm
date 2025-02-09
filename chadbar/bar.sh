@@ -41,7 +41,7 @@ volume() {
 cpu() {
 	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
 
-	printf "^c$blue^ 󰠰 %s" "$cpu_val"
+	printf "^c$blue^  %s" "$cpu_val"
 }
 
 mem() {
