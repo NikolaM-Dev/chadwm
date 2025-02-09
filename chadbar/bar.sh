@@ -45,7 +45,7 @@ cpu() {
 }
 
 mem() {
-	printf "^c$red^   %s" "$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
+	printf "^c$red^  %s" "$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
 wlan() {
