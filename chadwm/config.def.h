@@ -41,7 +41,7 @@ static int tag_preview = 0; // 1 means enable, 0 is off
 // --------------------------------------------- Fonts ---------------------------------------------- //
 
 static const char *fonts[] = {
-    "Maple Mono NF:size=10",
+    "JetBrainsMono Nerd Font:size=10",
 };
 
 static const int colorfultag = 1; // 0 means use SchemeSel for selected non vacant tag
