@@ -287,8 +287,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_e, spawn, SHCMD("rofi -show emoji")},
 
     // Terminal
-    {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("wezterm")},
-    {MODKEY, XK_Return, spawn, SHCMD("wezterm -e n-start-tmux")},
+    {MODKEY | ShiftMask, XK_Return, spawn, SHCMD("ghostty")},
+    {MODKEY, XK_Return, spawn, SHCMD("ghostty -e n-start-tmux")},
 
     // Browsers
     {MODKEY | ShiftMask, XK_w, spawn, SHCMD("chromium")},
