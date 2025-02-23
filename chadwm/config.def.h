@@ -298,6 +298,9 @@ static Key keys[] = {
     // File Explorer
     {MODKEY | ControlMask, XK_e, spawn, SHCMD("pcmanfm")},
 
+    // Emacs
+    {MODKEY , XK_e, spawn, SHCMD("emacs")},
+
     // Calc
     {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
 
