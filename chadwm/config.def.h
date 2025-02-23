@@ -296,7 +296,7 @@ static Key keys[] = {
     {MODKEY, XK_z, spawn, SHCMD("zen-browser")},
 
     // File Explorer
-    {MODKEY, XK_e, spawn, SHCMD("pcmanfm")},
+    {MODKEY | ControlMask, XK_e, spawn, SHCMD("pcmanfm")},
 
     // Calc
     {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
