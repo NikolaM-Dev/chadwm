@@ -301,6 +301,9 @@ static Key keys[] = {
     // Emacs
     {MODKEY , XK_e, spawn, SHCMD("emacs")},
 
+    // TODO:Change to use emacsclient when I get a emacs config MVP
+    //{MODKEY , XK_e, spawn, SHCMD("emacsclient -c -a 'emacs'")},
+
     // Calc
     {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
 
