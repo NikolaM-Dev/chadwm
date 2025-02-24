@@ -34,7 +34,7 @@ volume() {
 	if [ "$is_mute" = "true" ]; then
 		printf "^c$green^  --"
 	else
-		printf "^c$green^ 󰝚 %s" "$vol"
+		printf "^c$green^  %02d" "$vol"
 	fi
 }
 
