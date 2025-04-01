@@ -59,6 +59,10 @@ clock() {
 	printf "^c$blue^ 󱛡 %s" "$(date '+%H:%M:%S ╷ %Y-%m-%d | %a') "
 }
 
+pomo() {
+	printf "^c$red^$(n-pomo-status)"
+}
+
 while true; do
 	[ $interval = 0 ] || [ $((interval % 60)) = 0 ] && updates=$(pkg_updates)
 	interval=$((interval + 1))
