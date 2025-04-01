@@ -9,11 +9,14 @@ interval=0
 . ~/.config/chadwm/chadbar/themes/onedark
 
 pkg_updates() {
-	# updates=$(doas xbps-install -un | wc -l) # void
-	updates=$(checkupdates | wc -l) # arch , needs pacman-contrib
-	# updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
-
-	printf " %02d" $updates
+	if ping -c 1 google.com &> /dev/null; then
+		# updates=$(doas xbps-install -un | wc -l) # void
+		# updates=$(aptitude search '~U' | wc -l)  # apt (ubuntu,debian etc)
+		updates=$(checkupdates | wc -l) # arch , needs pacman-contrib
+		printf " %02d" $updates
+	else
+		printf " --"
+	fi
 }
 
 battery() {
