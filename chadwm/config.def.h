@@ -120,8 +120,8 @@ static const int lockfullscreen = 1; // 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
     // { symbol, arrange function }
-    { "D 0",   doubledeck             }, // Master on left, slaves in monocle-like mode on right
     { "[M]",   monocle                },    // All windows on top of eachother
+    { "D 0",   doubledeck             }, // Master on left, slaves in monocle-like mode on right
 
     { "[]",    tile                   },      // Default: Master on left, slaves on right
     { "[TTT]", bstack                 }, // Master on top, slaves on bottom
